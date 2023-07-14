@@ -73,4 +73,5 @@ const searchMeals = () => {
     const inputFieldMeal = document.getElementById('input-field');
     const inputFieldValue = inputFieldMeal.value;
     loadUserFetch(inputFieldValue);
+    inputFieldMeal.value = '';
 }

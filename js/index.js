@@ -1,3 +1,4 @@
+// meals container section
 const loadUserFetch = async (mealName) => {
     try {
         const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`;
@@ -9,7 +10,6 @@ const loadUserFetch = async (mealName) => {
         console.log(error)
     }
 }
-
 
 const displayMealsCard = meals => {
     const mealsContainer = document.getElementById('meals-container');
@@ -33,6 +33,9 @@ const displayMealsCard = meals => {
 }
 
 
+
+
+// meal details section
 const loadIdFetch = async (mealId) => {
     try {
         const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
@@ -45,9 +48,7 @@ const loadIdFetch = async (mealId) => {
     }
 }
 
-
 const displayMealDetails = meal => {
-    console.log(meal);
     const mealDetails = document.getElementById('meal-details');
     mealDetails.textContent = ``;
     const mealDiv = document.createElement('div');
@@ -67,10 +68,7 @@ const displayMealDetails = meal => {
 
 
 
-
-
-
-
+// input field section
 const searchMeals = () => {
     const inputFieldMeal = document.getElementById('input-field');
     const inputFieldValue = inputFieldMeal.value;

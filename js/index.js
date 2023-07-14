@@ -1,6 +1,6 @@
-const loadUserFetch = async () => {
+const loadUserFetch = async (mealName) => {
     try {
-        const url = `https://www.themealdb.com/api/json/v1/1/search.php?f=a`;
+        const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`;
         const res = await fetch(url);
         const data = await res.json();
         displayMealsCard(data.meals);
@@ -33,9 +33,9 @@ const displayMealsCard = meals => {
 }
 
 
-const loadIdFetch = async (id) => {
+const loadIdFetch = async (mealId) => {
     try {
-        const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
+        const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
         const res = await fetch(url);
         const data = await res.json();
         displayMealDetails(data.meals[0]);
@@ -57,8 +57,8 @@ const displayMealDetails = meal => {
         <img src="${meal.strMealThumb}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">${meal.strMeal}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <p class="card-text">${meal.strInstructions.slice(0, 250)}</p>
+            <a href="${meal.strYoutube}" class="btn btn-primary" target="_black">Go Youtube</a>
         </div>
     `
     mealDetails.appendChild(mealDiv);
@@ -67,4 +67,12 @@ const displayMealDetails = meal => {
 
 
 
-loadUserFetch();
+
+
+
+
+const searchMeals = () => {
+    const inputFieldMeal = document.getElementById('input-field');
+    const inputFieldValue = inputFieldMeal.value;
+    loadUserFetch(inputFieldValue);
+}
